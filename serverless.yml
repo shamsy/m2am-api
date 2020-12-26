@@ -37,6 +37,7 @@ functions:
       - http:
           path: videos
           method: post
+          cors: true
           authorizer: aws_iam
 
   get:
@@ -48,6 +49,7 @@ functions:
       - http:
           path: videos/{id}
           method: get
+          cors: true
           authorizer: aws_iam
 
   list:
@@ -59,6 +61,7 @@ functions:
       - http:
           path: videos
           method: get
+          cors: true
           authorizer: aws_iam
 
   update:
@@ -70,6 +73,7 @@ functions:
       - http:
           path: videos/{id}
           method: put
+          cors: true
           authorizer: aws_iam
 
   delete:
@@ -81,4 +85,10 @@ functions:
       - http:
           path: videos/{id}
           method: delete
+          cors: true
           authorizer: aws_iam
+
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
